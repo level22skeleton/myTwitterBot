@@ -36,9 +36,13 @@ class MarkovChainer(object):
         text = re.sub(r'\n\s*\n/m', ".", text)
         seps = '([.!?;:])'
         pieces = re.split(seps, text)
+        if pieces == "L":
+            pieces = "I"
         sentence = ""
         for piece in pieces:
             if piece != "":
+                if piece == "L":
+                    piece = "I"
                 if re.search(seps, piece):
                     self.add_sentence(sentence, piece)
                     sentence = ""

@@ -61,6 +61,7 @@ def filter_status(text):
     for item in htmlsents:
         text = text.replace(item, entity(item))
     text = re.sub(r'\xe9', 'e', text)  # take out accented e
+    text = re.sub(r'L', 'I', text)
     return text
 
 
@@ -207,6 +208,9 @@ if __name__ == "__main__":
             print("Losing last word randomly")
             ebook_status = re.sub(r'\s\w+.$', '', ebook_status)
             print(ebook_status)
+
+        if ebook_status[0] == "L":
+            ebook_status[0] = "I"
 
         # if a tweet is very short, this will randomly add a second sentence to it.
         if ebook_status is not None and len(ebook_status) < 40:
