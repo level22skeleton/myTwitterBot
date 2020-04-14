@@ -209,14 +209,8 @@ if __name__ == "__main__":
             ebook_status = re.sub(r'\s\w+.$', '', ebook_status)
             print(ebook_status)
 
-        if ebook_status[0] == "l":
+        if ebook_status[0] == "L":
             ebook_status[0] = "I"
-        int replaceChar = ebook_status.find("l ")
-        if replaceChar >= 0:
-            ebook_status[replaceChar] = "I"
-        replaceChar = ebook_status.find(" l ")
-        if replaceChar >= 0:
-            ebook_status[replaceChar + 1] = "I"
 
         # if a tweet is very short, this will randomly add a second sentence to it.
         if ebook_status is not None and len(ebook_status) < 40:
